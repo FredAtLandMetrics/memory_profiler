@@ -3,9 +3,10 @@
 # .. we'll use this to pass it to the child script ..
 _CLEAN_GLOBALS = globals().copy()
 
-__version__ = '0.47'
 
 _CMD_USAGE = "python -m memory_profiler script_file.py"
+from constants import MEMPROF_VERSION
+__version__ = MEMPROF_VERSION
 
 import time
 import sys
