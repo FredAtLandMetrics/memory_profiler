@@ -22,22 +22,22 @@ from signal import SIGKILL
 
 # TODO: provide alternative when multiprocessing is not available
 
-if "MEMPROF_PROCESSING_LIB" in os.environ and os.environ["MEMPROF_PROCESSING_LIB"] == "billiard":
-    print("importing Process and Pipe from billiard instead of multiprocessing")
-    from billiard import Process, Pipe
-else:
-    try:
-        from multiprocessing import Process, Pipe
-    except ImportError:
-        from multiprocessing.dummy import Process, Pipe
+# if "MEMPROF_PROCESSING_LIB" in os.environ and os.environ["MEMPROF_PROCESSING_LIB"] == "billiard":
+#     print("importing Process and Pipe from billiard instead of multiprocessing")
+from billiard import Process, Pipe
+# else:
+#     try:
+#         from multiprocessing import Process, Pipe
+#     except ImportError:
+#         from multiprocessing.dummy import Process, Pipe
 
-    try:
-        from IPython.core.magic import Magics, line_cell_magic, magics_class
-    except ImportError:
-        # ipython_version < '0.13'
-        Magics = object
-        line_cell_magic = lambda func: func
-        magics_class = lambda cls: cls
+try:
+    from IPython.core.magic import Magics, line_cell_magic, magics_class
+except ImportError:
+    # ipython_version < '0.13'
+    Magics = object
+    line_cell_magic = lambda func: func
+    magics_class = lambda cls: cls
 
 PY2 = sys.version_info[0] == 2
 
