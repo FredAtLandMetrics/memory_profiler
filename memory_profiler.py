@@ -22,7 +22,7 @@ from signal import SIGKILL
 
 # TODO: provide alternative when multiprocessing is not available
 
-if os.environ["MEMPROF_PROCESSING_LIB"] == "billiard":
+if "MEMPROF_PROCESSING_LIB" in os.environ and os.environ["MEMPROF_PROCESSING_LIB"] == "billiard":
     from billiard import Process, Pipe
 else:
     try:
