@@ -31,6 +31,7 @@ setup(
     py_modules=['memory_profiler'],
     scripts=['mprof'],
     classifiers=[_f for _f in CLASSIFIERS.split('\n') if _f],
-    license='BSD'
+    license='BSD',
+    install_requires=['billiard'],
 
 )
